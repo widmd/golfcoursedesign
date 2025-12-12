@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Golf Handicap Calculator App</title>
+    <style>
+        /* Styles kept in page as requested */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; background: #e6f7e6; }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            display: inline-block; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            border-top: 5px solid #38761d;
+        }
+        input { padding: 10px; width: 60px; margin: 5px; border: 1px solid #ccc; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        button { padding: 10px 20px; background: #38761d; color: white; border: none; cursor: pointer; margin-top: 15px; }
+        #result { margin-top: 20px; font-weight: bold; font-size: 1.1em; color: #b45f06; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Handicap Differential Calculator</h2>
+        <p>Calculate your score's differential for a single round.</p>
+        
+        <label for="score">Gross Score:</label>
+        <input type="number" id="score" placeholder="e.g. 85">
+
+        <label for="rating">Course Rating (e.g., 72.0):</label>
+        <input type="number" id="rating" value="72.0">
+
+        <label for="slope">Slope Rating (e.g., 130):</label>
+        <input type="number" id="slope" value="130">
+        
+        <br>
+        <button onclick="calculateDifferential()">Calculate Differential</button>
+        <div id="result"></div>
+        <br>
+        <a href="index.html">Back to Main Page</a>
+    </div>
+
+    <script>
+        function calculateDifferential() {
+            const score = parseFloat(document.getElementById('score').value);
+            const rating = parseFloat(document.getElementById('rating').value);
+            const slope = parseFloat(document.getElementById('slope').value);
+            
+            if (isNaN(score) || isNaN(rating) || isNaN(slope) || slope === 0) {
+                document.getElementById('result').innerText = "Please enter valid numbers for all fields.";
+                return;
+            }
+
+            // Formula: Differential = ((Adjusted Gross Score - Course Rating) * 113) / Slope Rating
+            // Using Gross Score for simplicity in a basic app
+            const differential = ((score - rating) * 113) / slope;
+            
+            document.getElementById('result').innerText = `Your Differential is: ${differential.toFixed(1)}`;
+        }
+    </script>
+</body>
+</html>

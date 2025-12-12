@@ -1,0 +1,126 @@
+/* ---------------------------------------------------- */
+/* Global & Reset Styles: FONT, COLOR, & BACKGROUND */
+/* ---------------------------------------------------- */
+body {
+    /* Requirement: Cream white background */
+    background-color: #f7f3e8; /* Light, sandy cream white */
+    margin: 0;
+    /* Requirement: Different Font Family */
+    font-family: 'Times New Roman', Times, serif; /* Changed font */
+    /* Requirement: Dark green text */
+    color: #004d40; /* Very dark green/teal for main text */
+    line-height: 1.6;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------------------------------------------- */
+/* Layout Complexity: CSS Grid for Main Page Structure */
+/* ---------------------------------------------------- */
+
+.page-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    /* Defines a main content area (70%) and a sidebar (30%) */
+    grid-template-columns: 3fr 1fr; 
+    grid-template-rows: auto auto 1fr auto; 
+    gap: 30px; 
+}
+
+/* Requirement: Different Text Placement (Grid Positioning) */
+/* The layout places the header, main content (wide), and data (narrow) in a specific grid: */
+.header-container { grid-column: 1 / -1; } 
+.main-content { 
+    grid-column: 1 / 2; 
+    /* Additional text placement adjustment: Left-align all text within this block */
+    text-align: left; 
+}    
+.data-box { 
+    grid-column: 2 / 3; 
+    /* Additional text placement adjustment: Center-align text in the sidebar */
+    text-align: center;
+}        
+.video-section { grid-column: 1 / -1; } 
+footer { 
+    grid-column: 1 / -1; 
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #c8d4c4;
+}
+
+/* Responsive Design: Collapse to a single column on small screens */
+@media (max-width: 900px) {
+    .page-container {
+        grid-template-columns: 1fr; 
+    }
+    .main-content, .data-box, .video-section {
+        grid-column: 1 / -1; 
+        text-align: left; /* Reset everything to left-align on mobile */
+    }
+}
+
+
+/* ---------------------------------------------------- */
+/* Styling & Presentation (Flexbox for internal complexity) */
+/* ---------------------------------------------------- */
+
+/* Requirement: Div 1: Header Container (Flexbox for centering) */
+.header-container {
+    background-color: #38761d; /* Original Dark Green */
+    color: #ffffff;
+    padding: 40px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the text horizontally */
+    text-align: center;
+}
+
+h1, h2, h3 {
+    /* Set headings to a different dark green/brown for contrast */
+    color: #2e7d32; 
+    font-family: 'Times New Roman', Times, serif;
+}
+.header-container h1, .header-container p {
+    color: #ffffff;
+}
+
+/* Requirement: Div 2: Main Content */
+.main-content {
+    background: white;
+    padding: 30px;
+    border: 1px solid #c8d4c4;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Requirement: Div 3: Data Box (Sidebar Styling) */
+.data-box {
+    background-color: #edebe4; /* Slightly different cream color */
+    padding: 20px;
+    border-left: 6px solid #b45f06;
+}
+
+/* Navigation (Flexbox for spacing) */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    background-color: #e6f7e6;
+    border-bottom: 1px solid #c8d4c4;
+}
+
+nav a {
+    color: #b45f06;
+    text-decoration: none;
+    padding: 5px 15px;
+    margin: 5px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #004d40;
+}
